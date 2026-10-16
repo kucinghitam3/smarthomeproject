@@ -1,0 +1,23 @@
+CREATE TABLE IF NOT EXISTS device (
+  id INTEGER PRIMARY KEY CHECK (id = 1),
+  name TEXT NOT NULL,
+  last_seen INTEGER
+);
+CREATE TABLE IF NOT EXISTS lamp (
+  id INTEGER PRIMARY KEY CHECK (id = 1),
+  state INTEGER NOT NULL DEFAULT 0,
+  updated_at INTEGER
+);
+CREATE TABLE IF NOT EXISTS readings (
+  id INTEGER PRIMARY KEY AUTOINCREMENT,
+  temperature REAL NOT NULL,
+  humidity REAL NOT NULL,
+  created_at INTEGER NOT NULL
+);
+CREATE TABLE IF NOT EXISTS activity (
+  id INTEGER PRIMARY KEY AUTOINCREMENT,
+  message TEXT NOT NULL,
+  created_at INTEGER NOT NULL
+);
+INSERT OR IGNORE INTO device (id, name) VALUES (1, 'ESP32 Ruang Tamu');
+INSERT OR IGNORE INTO lamp (id, state, updated_at) VALUES (1, 0, 0);
